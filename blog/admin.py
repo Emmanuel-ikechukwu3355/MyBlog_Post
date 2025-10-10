@@ -1,11 +1,7 @@
 from django.contrib import admin
-from .models import BlogPost
-from .models import Feedback
+from .models import Post, Comment
 
-admin.site.register(Feedback)
-
-
-
-admin.site.register(BlogPost)
+admin.site.register(Comment)
+admin.site.register(Post)
 
 # Register your models here.

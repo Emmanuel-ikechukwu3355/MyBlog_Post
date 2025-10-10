@@ -1,25 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <title>My Blog</title>
-        {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
-    </head>
-    <body>
-        <h1>Blog Posts</h1>
+<head>
+    <title>Blog Posts</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <h1>All Blog Posts</h1>
+    <a class="btn" href="{% url 'post_create' %}">+ New Post</a>
 
-        {% for post in post %}
-        <div class="post">
-            <h2>{{ post.title }}</h2>
-            <p><strong>Author:</strong> {{ post.author }}</p>
-            <p> {{ post.content }}</p>
-        </div>
-        <hr>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+                <p><strong>By:</strong> {{ post.author }}</p>
+                <p>{{ post.content|truncatechars:100 }}</p>
+            </li>
         {% empty %}
-        <p>No posts available.</p>
+            <p>No posts yet.</p>
         {% endfor %}
-    </body>
+    </ul>
+</body>
 </html>
+
 
 
