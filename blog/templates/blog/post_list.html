@@ -1,27 +1,12 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Blog Posts</title>
-    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
-</head>
-<body>
-    <h1>All Blog Posts</h1>
-    <a class="btn" href="{% url 'post_create' %}">+ New Post</a>
-
-    <ul>
-        {% for post in posts %}
-            <li>
-                <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
-                <p><strong>By:</strong> {{ post.author }}</p>
-                <p>{{ post.content|truncatechars:100 }}</p>
-            </li>
-        {% empty %}
-            <p>No posts yet.</p>
-        {% endfor %}
-    </ul>
-</body>
-</html>
-
-
-
+{% if user.is_authenticated %}
+  <p>
+    Welcome, {{ user.username }} |
+    <a href="{% url 'accounts:profile' %}">My Profile</a> |
+    <a href="{% url 'accounts:logout' %}">Logout</a>
+  </p>
+{% else %}
+  <p>
+    <a href="{% url 'accounts:login' %}">Login</a> |
+    <a href="{% url 'accounts:register' %}">Register</a>
+  </p>
+{% endif %}

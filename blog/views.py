@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
 from .forms import PostForm, CommentForm
 
+
 # 🟢 1. Display list of all posts
 def post_list(request):
     posts = Post.objects.all()
