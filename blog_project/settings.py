@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'blog',
     'accounts',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -134,4 +135,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "blog", "static"),
 ]
+
+
+
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'accounts:profile'
+LOGOUT_REDIRECT_URL = 'accounts:login'
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "home"
+LOGOUT_REDIRECT_URL = "login"
+
+
 

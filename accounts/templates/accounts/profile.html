@@ -3,16 +3,7 @@
 {% block content %}
   <div class="container">
     <h2>Welcome, {{ user.username }}!</h2>
-    <p>Email: {{ user.email }}</p>
-    <p>Bio: {{ user.bio|default:"No bio yet." }}</p>
-
-    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+    <p>This is your profile page.</p>
+    <a href="{% url 'logout' %}">Logout</a>
   </div>
-
-  @login_required
-def profile_view(request):
-    profile = getattr(request.user, 'profile', None)
-    return render(request, 'accounts/profile.html', {'user': request.user, 'profile': profile})
-
 {% endblock %}
-
